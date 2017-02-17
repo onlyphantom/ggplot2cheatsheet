@@ -3,8 +3,8 @@ title: 'Beautiful plotting in R: A ggplot2 cheatsheet'
 author: "Samuel Chan"
 date: "14/02/2017"
 output:
-  html_document: default
   html_notebook: default
+  html_document: default
   pdf_document: default
 ---
 
@@ -42,7 +42,7 @@ g
 g <- g + ggtitle('Temperature')
 g
 ```
-Alternative, we can use labs():
+Alternatively, we can use labs():
 g + labs(title = 'Title')
 
 ### Make title bold and add a little space at the baseline: face, margin
@@ -94,7 +94,7 @@ g + theme(axis.title.x = element_text(color="forestgreen", vjust=0.35),
 g + ylim(c(0,60))
 ```
 Alternatively: g + scale_x_continuous(limits=c(0,35)) + g+coord_cartesian(xlim=c(0,35)). 
-The former removes all data points outside the ranger and second one adjusts the visible area.
+The former removes all data points outside the range and second one adjusts the visible area.
 
 ### If you want the axes to be the same: coord_equal()
 For demo purposes, we will plot the temperature against the temperature with some random noise. We want both axes to be the same scale / same range.
@@ -294,9 +294,9 @@ For simple applications working with colors is straightforward in ggplot2 but wh
 
 In order to use color with your data, most importantly, you need to know if you’re dealing with a categorical or continuous variable.
 
-### Categorial variables - manually select the colors: scale_color_manual()
+### Categorial variables - manually select the colors: scale_color_manual(name, values)
 ```{r}
-ggplot(nmmaps, aes(date, temp, color=factor(season))) + geom_point() + scale_color_manual(values = c("dodgerblue4", "darkolivegreen4",
+ggplot(nmmaps, aes(date, temp, color=factor(season))) + geom_point() + scale_color_manual(name="Season", values = c("dodgerblue4", "darkolivegreen4",
                               "darkorchid3", "goldenrod1"))
 ```
 
